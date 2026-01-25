@@ -1,0 +1,2 @@
+# Shortcuts
+Speedup your test
