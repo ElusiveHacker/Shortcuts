@@ -1,6 +1,6 @@
 # OSCP Pentesting Zsh Profile (~/.zshrc)
 
-This customized `~/.zshrc` for Kali Linux (zsh interactive shells) enhances productivity during OSCP exam prep and pentesting. It includes optimized settings, keybindings, completions, and aliases to speed up common tasks like file transfer servers and network checks.
+This customized `~/.zshrc` for Kali Linux (zsh interactive shells) enhances productivity during OSCP exam prep and pentesting. It includes optimized settings, keybindings, completions, and aliases to speed up common tasks like file transfer servers and network checks. When you test and sleep at the same time you need colors and speed.
 
 Source after edits: `source ~/.zshrc`. Restart terminal or run `exec zsh`.
 
@@ -13,7 +13,7 @@ Source after edits: `source ~/.zshrc`. Restart terminal or run `exec zsh`.
 - **Aliases**: ls colors (ll/la/l), grep/ip/diff colored.
 
 ## Pentesting Aliases
-These speed up OSCP workflows by automating `/home/jerry/Exploits` directory changes, IP detection (prefers tun0 for VPN), and server starts with client commands.
+These speed up OSCP workflows by automating `/home/user/Exploits` directory changes, IP detection (prefers tun0 for VPN), and server starts with client commands.
 
 - **c**: `clear` screen.
 - **infostart**: Prints current dir and network status (eth0/tun0 IPs).
@@ -24,7 +24,7 @@ These speed up OSCP workflows by automating `/home/jerry/Exploits` directory cha
 
 **Example Output (pythonstart)**:
 ```
-Current directory: /home/jerry/Exploits
+Current directory: /home/user/Exploits
 ------------------------------
 | Network status:
 ------------------------------
@@ -59,10 +59,10 @@ Paste this into `~/.zshrc` (backs up original: `cp ~/.zshrc ~/.zshrc.bak`). Matc
 ```
 
 **Usage Tips**:
-- Place exploits in `/home/jerry/Exploits`.
+- Place exploits in `/home/user/Exploits`.
 - For VPN: Connect OpenVPN first; infostart shows tun0 IP.
 - Toggle prompt: Ctrl+P (twoline/oneline).
 - Test: `pythonstart 8080` → Serves on 8080 with commands.
 
 ## Customization
-Edit `/home/jerry/Exploits` path if needed. Add more (e.g., phpstart from history). Reload: `source ~/.zshrc`. Ideal for OSCP labs—reduces keystrokes for priv esc testing.
+Edit `/home/user/Exploits` path if needed. Add more (e.g., phpstart from history). Reload: `source ~/.zshrc`. Ideal for OSCP labs—reduces keystrokes for priv esc testing.
