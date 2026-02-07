@@ -1,4 +1,4 @@
-# OSCP Pentesting Zsh Profile (~/.zshrc)
+#Pentesting Zsh Profile (~/.zshrc)
 
 This customized `~/.zshrc` for Kali Linux (zsh interactive shells) enhances productivity during OSCP exam prep and pentesting. It includes optimized settings, keybindings, completions, and aliases to speed up common tasks like file transfer servers and network checks. When you test and sleep at the same time you need colors and speed.
 
