@@ -1,43 +1,109 @@
-# Zsh Profile - Custom Aliases for pentest & Options Explained
+Here’s a **minimal README** that **mentions ONLY the pentesting / CTF aliases and functions**.
+No shell config, no prompt, no fluff.
 
-## Core Zsh Options (setopt)
-These configure fundamental shell behavior for better usability:
+---
 
-| Option | Explanation |
-|--------|-------------|
-| `autocd` | Change directory by typing just the directory name (no `cd` needed) |
-| `interactivecomments` | Allow `#` comments on interactive command lines |
-| `magicequalsubst` | Expand `anything=expression` arguments (e.g., `app=/path/to/app`) |
-| `nonomatch` | Silently ignore unmatched globs instead of erroring |
-| `notify` | Report background job status immediately |
-| `numericglobsort` | Sort filenames numerically (e.g., `file2.txt` before `file10.txt`) |
-| `promptsubst` | Enable command substitution (`$(...)`) in prompts |
+# Zsh Pentest / CTF Aliases
 
-## Custom Aliases
+This Zsh profile defines a set of **offensive security–focused aliases and functions** optimized for **CTFs, labs, and pentests**.
+Everything is designed for **speed, repeatability, and zero context switching**.
 
-### Security/Pentesting Aliases
-Quick access for cybersecurity workflows (Kali Linux style):
+---
 
-- `c='clear'` – Fast screen clear
-- `getrepo='git clone'` – Quick repository cloning
-- `nmaptcp='sudo nmap -n -Pn -d -sS --open -p- -T4 --min-rate=10000'`  
-  **Flags**: No DNS (`-n`), skip host discovery (`-Pn`), debug (`-d`), SYN scan (`-sS`), open ports only (`--open`), all ports (`-p-`), aggressive timing (`-T4`), high rate
-- `nmapudp='sudo nmap -n -Pn -d -sU --open -p- -T4 --min-rate=10000'`  
-  **Like above but UDP scan** (`-sU`)
-- `nmaptcpversion='sudo nmap -d -sCSV -T4 --min-rate=10000 -p'` – TCP version scan (CSV output; specify ports)
-- `nmapudoversion='sudo nmap -d -sCUV -T4 --min-rate=10000 -p'` – UDP + scripts + versions (specify ports)
+## Core Utility
 
-### Interactive/File Aliases
-Productivity shortcuts with color support:
+| Alias | Purpose        |
+| ----- | -------------- |
+| `c`   | Clear terminal |
 
-| Alias | Command | Purpose |
-|-------|---------|---------|
-| `history="history 0"` | `history 0` | Show **complete** history (no limit) |
-| `ls` | `ls --color=auto` | Colored directory listing |
-| `ll` | `ls -l` | Long format listing |
-| `la` | `ls -A` | List all except `.` and `..` |
-| `l` | `ls -CF` | Classified list (executable appends `*`) |
-| `grep` | `grep --color=auto` | Colored pattern search |
-| `fgrep`/`egrep` | Fixed/extended regex with color | Pattern variants |
-| `diff` | `diff --color=auto` | Colored file comparison |
-| `ip` | `ip --color=auto` | Colored network interface info |
+---
+
+## Git / Tooling
+
+| Alias           | Purpose                            |
+| --------------- | ---------------------------------- |
+| `getrepo <url>` | Clone exploit or tool repositories |
+
+---
+
+## Nmap Scanning Presets
+
+High-speed scans with no DNS resolution and no host discovery.
+
+| Alias                         | Description                   |
+| ----------------------------- | ----------------------------- |
+| `nmaptcp <IP>`                | Full TCP SYN scan (all ports) |
+| `nmapudp <IP>`                | Full UDP scan (all ports)     |
+| `nmaptcpversion <ports> <IP>` | TCP version + default scripts |
+| `nmapudoversion <ports> <IP>` | UDP version + default scripts |
+
+---
+
+## Privilege Escalation Cheat Sheets
+
+Printed directly to terminal.
+
+| Command       | Description                                              |
+| ------------- | -------------------------------------------------------- |
+| `helpwindows` | Windows privilege escalation + file transfer cheatsheet  |
+| `helplinux`   | Linux privilege escalation, file transfer, shell upgrade |
+
+---
+
+## Network Helpers
+
+| Function        | Description                                         |
+| --------------- | --------------------------------------------------- |
+| `get_device_ip` | Resolve active local IP                             |
+| `infostart`     | Show working dir, interface status (`eth0`, `tun0`) |
+
+---
+
+## File Transfer Servers
+
+All servers run from `/home/jerry/Exploits` and auto-detect IP.
+
+### FTP
+
+| Command              | Description              |
+| -------------------- | ------------------------ |
+| `ftpstart`           | Anonymous RW FTP server  |
+| `ftpstart user pass` | Authenticated FTP server |
+
+### HTTP
+
+| Command            | Description                       |
+| ------------------ | --------------------------------- |
+| `httpstart`        | Python HTTP server on port 80     |
+| `httpstart <port>` | Python HTTP server on custom port |
+
+Includes auto-printed Linux + Windows download commands.
+
+---
+
+## Netcat Listeners (rlwrap-enabled)
+
+| Command | Port |
+| ------- | ---- |
+| `n4444` | 4444 |
+| `n5555` | 5555 |
+| `n443`  | 443  |
+| `n80`   | 80   |
+| `n53`   | 53   |
+
+Each listener:
+
+* Detects local IP
+* Prints victim-side commands
+* Uses `rlwrap` for shell usability
+
+---
+
+## Assumptions
+
+* Kali / Debian-based OS
+* VPN interface: `tun0`
+* Working directory: `/home/jerry/Exploits`
+* Tools available: `nmap`, `nc`, `python3`, `pyftpdlib`, `rlwrap`
+
+---
