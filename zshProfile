@@ -379,6 +379,28 @@ helplinux() {
   echo -e "${BOLD}${BLUE}Run: script /dev/null -c bash${NC}"
 }
 
+helptunnel() {
+  echo -e "${BOLD}${RED}════════════════════════════════════════════════════${NC}"
+  echo -e "${BOLD}${RED}   TUNNEL COMMANDS FOR AD${NC}"
+  echo -e "${BOLD}${RED}════════════════════════════════════════════════════${NC}"
+  echo ""
+  echo -e "${RED}On Kali Box: chmod +x chisel ${NC}"
+  echo -e "${RED}On Kali Box: sudo ./chisel server -p 8001 --socks5 --reverse ${NC}"
+  echo -e "${RED}On Kali Box: ./chisel server -p 8001 --socks5 --reverse ${NC}"
+  echo -e "${RED}On Windows Box: chisel client <KALIP>:8001 R:socks - check x64 or x32 bit version${NC}"
+  echo -e "${RED}On Kali Box: proxychains -q nmap -Pn -sT -p445,88,139 ${NC}"
+  echo -e "${RED}On Kali Box: sudo proxychains bash ./ADScanner.sh [args] <Password> ${NC}"
+  echo -e "${RED}On Kali Box: nxc ldap DC_IP -u '' -p '' --users ${NC}"
+  echo ""
+}
+
+#######################################
+####### TUNNELING COMMANDS         ####
+#######################################
+
+alias proxyad='proxyschains -q nmap -Pn -sT -p445,88,21,139,1433,139,389,5985,5985,3389,47001,80,443'
+alias proxywin='proxyschains -q nmap -Pn -sT -p445,21,139,1433,139,5985,5985,3389,47001,80,443'
+
 ############## ALIAS REMOTE FILE SHARING ################
 
 # IP & Network functions
